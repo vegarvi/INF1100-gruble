@@ -8,7 +8,10 @@ class Tank:
 	
 	def dh(self,h,t):
 		r, R, g = self.r, self.R, self.g
-		return -(float(r)/R)**2*sqrt(2*g*h)
+		if h>0:
+			return -(float(r)/R)**2*sqrt(2*g*h)
+		else:
+			return 0
 
 	def set_h0(self,h0):
 		self.h0 = h0
@@ -21,10 +24,15 @@ class Tank:
 			dt = t[i+1]-t[i]
 			h[i+1] = h[i] + dt*self.dh(h[i],t[i])
 		return h
-			
+
+
+	def h_exact(self,t):
+		h0,g,r,R = self.h0, self.g, self.r, self.R
+		tmax = 2*sqrt(h0)/((r/R)**2*sqrt(2*g))
+		return (t <= tmax)*0.25*(2*sqrt(h0) - (r/R)**2*sqrt(2*g)*t)**2
 
 dt = 0.1
-T = 100
+T = 200
 N = int(T/dt)
 t = linspace(0,T,N)
 
@@ -35,6 +43,6 @@ h0 = 1
 T = Tank(r,R)
 T.set_h0(h0)
 h = T(t)
-plot(t,h)
+plot(t,h,t,T.h_exact(t))
 show()
 

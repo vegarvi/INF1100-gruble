@@ -1,0 +1,33 @@
+1) Integral_eff.py
+
+a). Programmet skal ha blitt modifisert til å være mer effektivt. Sjekk dette ved å importere time og sjekke tiden det tar å beregne et integral for arrayen x med de to forskjellige metodene. Altså:
+
+import time
+t1 = time.time()
+
+# beregn v metode1
+t2 = time.time()
+# beregn v metode2
+
+t3 = time.time()
+
+Og finn tiden brukt på hver metode. Gikk det slik du forventet? 
+
+
+
+b) Kan du finne enda en måte å gjøre programmet mer effektivt (her: raskere) på? Hint: numpy.sum
+
+
+c) Finn en funksjon du vet integralet på og sjekk hvor stor feilen i et punkt blir når du bruker trapesmetoden for å integrere. Prøv med flere verdier av n. Kan du se en sammenheng mellom n og feilen?
+
+
+2) Tank_ODE
+
+a) Skriv en klasse class Tank: for å løse oppgaven tank_ODE. Oppsett kan du velge selv. Forslag:
+- init(self,r,R,g=9.81)
+- dh(self,h)
+- set_h0(self,h0)
+- __call__(self,t) 
+call returnerer vannstanden etter tiden t, der t er en array. 
+Her kan du f.eks bruke Forward Euler. 
+
